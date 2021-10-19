@@ -1,0 +1,73 @@
+---
+title: "01NAEX - Home project 01 - Pulse problem"
+author: "Jiri Franc and his friends"
+date: "2021/10/12"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# get requirements for this exercise
+list_of_packages <- c("tidyverse", "car", "lattice", "pwr", "MASS","GGally")
+missing_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
+if(length(missing_packages)) install.packages(missing_packages)
+lapply(list_of_packages, library, character.only = TRUE)
+
+######################
+# check our settings
+#getwd()
+#print(.libPaths())
+#print(sessionInfo())
+#print(version)
+```
+
+
+## Home exercise:
+
+V tomto úkolu zjistěte, jaký má vliv fyzická aktivita na změnu tepové frekvence.
+
+# Provedení:
+
+Proveďte všichni v teamu následující fyzické cvičení a zjistěte jak faktory "exercise". Vyberte 3 úrovně, přičemž volte rozdílně těžká cvičení, například (dřepy, kliky, sedy-lehy, výstupy na židli, prkno, ...) a  "number" jehož úrovně jsou 10,20,30 (počet opakování, počet vteřin ) ovlivňují nárůst tepové frekvence za minutu. Změřte si tepovou frekvenci v klidu (před každým další měřením byste ji měli mít na podobné úrovní) a poté okamžitě po daném cvičení. Stačí měřit 15 sekund a naměřenou hodnotu vynásobit 4. Celkem provedete každý 9 měření.
+
+# Odevzdání: 
+
+Vypracované řešení úkolu odevzdejte do 29. 10. 2021 ve formátu pdf + Rmd/jpnb.
+
+
+# Otázky: 
+
+ 1. Naměřte data a experiment nastavte tak, aby byl znáhodněný. Nezapomeňte zaznamenat u jednotlivých měření jejich pořadí a operátora (člen skupiny provádějící měření). Počet replikací pro operátora, exercise a number je 1.
+
+2.   Spočtěte základní statistiky  (mean, median a sd pro jednotlivé proměnné)
+      Zobrazte naměřená data (box plot, interaction plot, effects plot, ...) a okomentujte
+      co z daných obrázků můžeme před samotnou analýzou predikovat o výsledku. 
+ 
+3.  Zaměřte se zvláště na faktory exercise a number. Otestujte hypotézu o shodnosti rozptylu pro jednotlive úrovně
+      a vhodnym testem ověřte stejnost středních hodnot.  Provedte Tukey HSD a Fisher LSD test pro párove porovnáni středních  hodnot jednotlivych skupin s vybranou korekcí phodnoty.
+
+4.  Analyzute data pomocí ANOVA (všechny proměnne berte jako faktor)
+        * s předpokladem, že každý z účastníků experimentu tvoří blok.
+       *  diskutujte výsledky, ověřte předpoklady, vykreslete QQ-plot, residua x fitted values, residua x factor levels, ...
+       * diskutujte vliv znáhodněni experimentu a vyvoj rezidui v čase (čislo měření)
+
+5.  Porovnejte a diskutujte výsledky z bodu 3 a 4.
+
+6. Pokud data nesplňují předpoklady pro použití ANOVA, diskutujte možné transformace (logaritmická, Box-Cox, ...)
+      a důvod proč data předpoklady nesplňují? Výskyt outlieru, zpusob měření, divný operátor, ...
+      
+7. Vyberte nejvhodnějsi model a i kdyby nesplňoval předpoklady pro použití ANOVA řešte následujiící: 
+   * Spočtěte sílu testu v ANOVA (pro max. dvoufaktorovou analyzu, tj. jeden z faktoru zanedbejte, nebo vezmete měření pro jednu jeho konkretni úroveň)
+   * Předpokládejme, že standardní odchylka disturbancí bude pro provadený experiment 4
+     a maximalni (pro nás signifikantní) rozdíl, který chceme detekovat je 5 tepu za minutu.
+     Spočtěte počet potřebných replikací, aby síla výsledného testu byla větši než 0.9
+ 
+8. Vytvořte regresní model, kde nebudete uvažovat bloky a počet cviků bude kvantitativní proměnná.
+      * zkuste přidat do modelu i druhou mocninu a porovnejte dva regresní modely mezi sebou a vyberte vhodnější
+      * ověřte předpoklady pro použití vybraného modelu a vykreslete QQ-plot, residua x fitted values, ...
+
+   Pozn: V připadě, že bloky jsou velmi dominantní a žádná z dalších proměnných se nejeví významná,
+      použijte pro výslednou analýzu jen "operátora s daty nejlepšími pro akademicke účely".
+
+
