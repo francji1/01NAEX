@@ -264,6 +264,7 @@ add.response(plan,response=result)
 
 
 
+
 #Exercise:
 #Problem 6.1 and 6.2
 data61 <- read.table("data/Problem_6_1.txt",header=T,sep=";")
@@ -276,6 +277,7 @@ life <- c(data61$resp[seq(1,22,by=3)],data61$resp[seq(2,23,by=3)],data61$resp[se
 k=3
 model1 <-  FrF2(2^k, k, replications = 3, randomize = FALSE,factor.names = c("A", "B", "C"))
 model1 <- add.response(model1,response=life)
+model1
 MEPlot(model1)
 IAPlot(model1)
 # compare with
@@ -283,9 +285,10 @@ interaction.plot(model1$A,model1$C,life)
 interaction.plot(model1$C,model1$A,life)
 attach(model1)
 
+qqplot(DanielPlot(model1,alpha=0.1)$x,DanielPlot(model1)$y)
+qqline(DanielPlot(model1,alpha=0.1)$y)
 
 summary(life.aov1 <- aov(life~A*B*C))
-
 summary(life.aov1 <- aov(life~A*C+B))
 
 summary(lm(life~A*C+B))
@@ -301,6 +304,21 @@ C.num <- as.numeric(as.character(C))
 data61.num <- as.data.frame(cbind(life,A.num,B.num,C.num))
 
 life.lm          <- lm(life~A.num*C.num+B.num)
+life.lm$coefficients
+# Model
+# Y_ijk = 40.8333 + 0.1667x_A + 3.4167x_C  + 5.6667x_B - 4.4167 x_A*x_C  
+
+par(mfrow = c(2, 2))
+plot(life.lm)
+par(mfrow = c(1, 1))
+
+# To maximize life
+life.lm$coefficients
+# Set B as high as possible
+# Set C at high level and A at the low level.
+
+### Contour plot
+
 life.tmp         <- list(A.num=seq(-1,1,by=.01),C.num=seq(-1,1,by=.01))
 life.new.data    <- expand.grid(life.tmp)
 life.new.data$B.num  <- 1
@@ -308,7 +326,6 @@ life.new.data$fit  <- predict(life.lm ,life.new.data)
 contourplot(fit~A.num+C.num,life.new.data,
             xlab="A:Cutting Speed",ylab="C:Cutting Angle",
             main = "Contour plot of Life")
-
 
 
 library(ggplot2)
@@ -320,8 +337,11 @@ ggplot(life.new.data, aes(A.num, C.num)) +
        level = "Life") 
 
 ggplot(life.new.data, aes(A.num, C.num)) +
-    geom_contour(aes(z = fit, col = factor(stat(level))), breaks = c(38:55)) +
+    geom_contour(aes(z = fit, col = factor(stat(level))), breaks = c(39:54)) +
     labs(title = "Contour plot",
          x="A:Cutting Speed",y="C:Cutting Angle",
          colour = "Life") 
     
+
+
+
