@@ -1,21 +1,26 @@
-# NAEX - Exercise 4
-# Written by J. Franc - jiri.franc@fjfi.cvut.cz
+################################################################################
+# 01NAEX - Exercise 04
 # Data and exercises come from D.C. Montgomery: Design and Analysis of Experiment
+################################################################################
 
-#Instalation of any library
-library(car)          # provides a set of useful functions for ANOVA designs and Regression Models;
-library(lattice)      # provides some graphical enhancements compared to traditional R graphics, as well as multivariate displays capabilities;
-library(lme4)         # the newer and enhanced version of the nlme package, for which additional data structure are available (nested or hierarchical model,. . . );
-library(nlme)         # for handling mixed-effects models;
-library(pwr)          # power analysis
-library(agricolae)    # for Fisher LSD method
-library(scatterplot3d)# for 3d scatter plot
-library(alr3)
-library(FrF2)          #for 2^k  factorial design
-library(DoE.base)      # Full factorials, orthogonal arrays and base utilities for DoE packages
-# for opening xls files: library(gdata) library(XLConnect) library(xlsReadWrite)
-library(tidyverse)      # Full factorials, orthogonal arrays and base utilities for DoE packages
+######################
+# get requirements for the Exercise
+list_of_packages <- c("tidyverse", "car","nortest","lattice","pwr","MASS",
+                      "agricolae","scatterplot3d","FrF2","DoE.base","alr3")
+missing_packages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
+if(length(missing_packages)) install.packages(missing_packages)
+lapply(list_of_packages, library, character.only = TRUE)
 
+######################
+# check our settings
+getwd()
+#print(.libPaths())
+#print(sessionInfo())
+#print(version)
+
+# Define directory, if you do not use relative path in R project.
+#setwd("M:/01NAEX/")
+###############################################################################
 
 # Solve Problems 4-23, 4.40, and 4-42 from Montgomery.
 

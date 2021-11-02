@@ -1,6 +1,6 @@
 ################################################################
-# 01NAEX - Exercise 05
-# Data and exercises come from D.C. Montgomery: Design and Analysis of Experiment
+# 01NAEX - Exercise 06
+# Data and exercises come from D.C. Montgomery: Design and Analysis of Experiment 
 ################################################################
 
 ######################
@@ -22,7 +22,18 @@ getwd()
 #setwd("M:/01NAEX/")
 ###############################################################################
 
-# Task: Solve Problems 6.1 and 6.2 from Montgomery DAoE ed.8 - chapter 6
-Problem_61 <- read.table("data/Problem_6_1.txt",header=TRUE,sep=";")
+# Task: Solve Problems 6.31 from Montgomery DAoE ed.8 - chapter 6
+Problem_631 <- read.table("data/Problem_6_31.txt",header=TRUE,sep=";")
+
+m         <- FrF2(2^4, 4, replications = 1, randomize = F,
+                  factor.names = c("A", "B","C", "D"))
+Weight    <- Problem_631[1:16,"Weight"]
+Viscosity <- Problem_631[1:16,"Viscosity"]
+m         <- add.response(m,Weight)
+m         <- add.response(m,Viscosity)
+
+response.names(m)
+print(m)
+
 
 
