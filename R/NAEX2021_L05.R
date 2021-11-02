@@ -281,7 +281,7 @@ model1
 MEPlot(model1)
 IAPlot(model1)
 # compare with
-interaction.plot(model1$A,model1$C,life)
+interaction.plot(model1$A,model1$C,life,type = "l")
 interaction.plot(model1$C,model1$A,life)
 attach(model1)
 
@@ -302,6 +302,7 @@ B.num <- as.numeric(as.character(B))
 C.num <- as.numeric(as.character(C))
 
 data61.num <- as.data.frame(cbind(life,A.num,B.num,C.num))
+str(data61.num)
 
 life.lm          <- lm(life~A.num*C.num+B.num)
 life.lm$coefficients
@@ -321,6 +322,7 @@ life.lm$coefficients
 
 life.tmp         <- list(A.num=seq(-1,1,by=.01),C.num=seq(-1,1,by=.01))
 life.new.data    <- expand.grid(life.tmp)
+dim(life.new.data)
 life.new.data$B.num  <- 1
 life.new.data$fit  <- predict(life.lm ,life.new.data)
 contourplot(fit~A.num+C.num,life.new.data,
@@ -332,7 +334,7 @@ library(ggplot2)
 
 ggplot(life.new.data, aes(A.num, C.num)) +
   geom_contour_filled(aes(z = fit), breaks = c(39:55)) +
-  labs(title = "Contour plot",
+  labs(title = "Contour plot (B = 1)",
        x="A:Cutting Speed",y="C:Cutting Angle",
        level = "Life") 
 
