@@ -22,10 +22,7 @@ getwd()
 #print(version)
 
 # Define directory, if you do not use relative path.
-#setwd("M:/01NEX_2020/")
-
-# library(FrF2)          #for 2^k  factorial design
-
+#setwd("M:/01NAEX/")
 ##############################################################################
 # Follow Chapter 6 - Montgomery DAOE
 yields <- read.table("data/yield.txt",header=T)
