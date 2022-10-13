@@ -149,9 +149,14 @@ plot(TukeyRep) # Misinterpretation !!!
 
 # Use TukeyHSD only for RCBD design !!!
 
+install.packages("multcomp")
+library(multcomp)
 
+Catalist_aov <-(aov(rep~block+treat,Catalists.df))
+contr <- glht(Catalist_aov, linfct = mcp(treat = "Tukey"))
+summary(contr, test = adjusted("none")) 
 
-
+summary(contr, test = adjusted("bonferroni")) 
 
 
 
