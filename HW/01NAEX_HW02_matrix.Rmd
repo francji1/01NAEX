@@ -1,0 +1,92 @@
+---
+title: "01NAEX - Homework 2: Matrix multiplication problem"
+author: "Team Name: students"
+#date: "November 6th 2022"
+output: pdf_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Assignment 
+
+Design an experiment to measure the computation speed of manual matrix multiplication that examines the dependence on 6 factors. Assume that, due to time constraints, you are forced to use a $\frac{1}{2}$ fraction design: $2^{6-1}$ or a $\frac{1}{4}$ fraction design: $2^{6-2}$ with replications, or full factorial design with operators as blocks.
+
+The response is the time in seconds that you measure.
+
+## The factors examined are (you can change the factors, but keep the number of factors):
+
+ 1) matrix size - small (3x3) x large (5x5)     
+ 2) representation of zeros (sparsity of the matrix) - small (cca 40%) x large ( cca 60%)
+ 3) influence of concentration 1 - low x high      
+ 4) influence of concentration 2 - low x high       
+ 5) representation of non-integers - low (cca 20%) x high (cca 40%)      
+ 6) using calculator x without using calculator      
+ 
+ Influence concentration take for example music, time of day, intoxicants (i.e. chocolate, ...), ... 
+ 
+## Note on measurement
+
+What factor do you expect to have no effect on the result? What factors do you mark in advance as most influential factors. Arrange the factors so that if your assumption is confirmed, you will receive a design with at least Resolution IV.
+
+If there are more of you in the group and the number of you allows to create orthogonal blocks, create them Each of you will make at least 8 measurements. 
+If the number of you in the group does not match $2^k$, for example, measure all the same thing, treat the blocks as replications, or use only the $2^k$ operator.
+
+### Additional measurements
+
+It is suspected that the influence of quantitative variables is not linear. Measure the experiment in  "center points" - the midpoint between the high and low levels and analyze this design. 
+
+
+## Design an experiment and answer the following questions (For 0-4, use data without center points).
+
+ 0) Decide how you will determine the low and high levels for each variable. What data will you record. 
+
+ 1) What are the generators used in the design and why did you choose them?
+    What is the resolution and alias structure for the given design?
+If you have multiple operators, is the effect of this nuisance factor in the representation with any effect of interest? 
+    What is the alternative division (alternative generators)?
+
+ 2) Count the individual effects (include the substitution structure).
+
+ 3) Find out what factors and their interactions appear significant (use daniel and pareto plot)
+    Create main effects plot, interaction plot, boxplots.
+    What can be inferred from the data? Comment carefully. If you know another useful visualization of the measured values, do it.
+
+ 4) Perform analysis of variance, find and validate the resulting model without center point.
+
+ 5) Use additional assumptions and additional measurements at the centres, 
+     and confirm or reject assumption of the linear dependence in the numerical variables.
+
+ 6) Construct a regression model where you convert the coded quantitative variables to actual numerical values    (use the other variables according to their significance).
+
+  7) Use a regression model with at least two numerical variables (even if they are less significant). Plot a contour plot for the two quantitative variables and find the optimal values (maximum/minimum response) in intervals increased by 10% compared to the extreme values from the experimental design. In the contour plot, use actual values instead of code values.
+
+
+## Submission
+
+Upload the completed report in pdf format with the corresponding Rmarkdown Rmd file, or Jupyter notebook with the code and the measured data in MS Teams by 28.11.2022 in the format 01NAEX_HW2_TeamName.PDF (R, csv).
+
+
+```{r, echo=FALSE, results='hide',message=FALSE}
+#Instalation of required libraries
+library(car)        
+library(lattice)    
+library(MASS)
+library(scatterplot3d)
+library(FrF2)           
+```
+```{r, echo=FALSE}
+k=6
+n_oper=3
+
+designHW          <-  FrF2(2^(k-2), k, replications = n_oper, randomize = T, seed = c(42),
+                            factor.names = LETTERS[1:k])
+summary(designHW)
+distance <- rnorm(2^{k-2}*n_oper,0,10)
+designHW <- add.response(designHW,distance)
+designHW
+```
+
+## Have a fun ;)
