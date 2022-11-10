@@ -1,0 +1,220 @@
+---
+title: "01NEX2018 - Solution of Exercise 7"
+author: "Jiri Franc"
+date: "12 listopadu 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#Instalation of any library
+library(car)
+library(lattice)     
+library(scatterplot3d)
+library(rsm)          
+library(FrF2)
+library(rmarkdown)
+```
+
+# Assignement
+
+An experiment was run in a semiconductor fabrication plant in an effort to increase yield.
+Five factors, each at two	levels, were studied. The factors (and levels) were A = aperture
+setting (small, large), B = exposure time (20% below nominal,
+20% above nominal), C = development time (30 and 45 s), D =
+mask dimension (small, large), and E = etch time (14.5 and 15.5 min). The unreplicated $2^5$ design was run.  
+
+
+## Task
+
+Solve problems 6.26, 6.27 following by 7.7 and 7.8. described below (from C. Montgomery DAoE - 8. edition).  
+
+### Exercise 1:
+Construct a normal probability plot of the effect estimates. Which effects appear to be large?
+
+We read dataset, create design (without center points)and visualise data:
+```{r}
+Ex626     <- read.table("m:/01NAEX/data/Ex06_26.csv",header=TRUE, sep = ";")
+Exp626    <-  FrF2(2^5, 5, replications = 1, randomize = FALSE,factor.names = c("A", "B", "C", "D","E"))
+Yield     <-  Ex626$Yield[1:32]
+Exp626    <-  add.response(Exp626, Yield)
+summary(Exp626)
+
+```
+
+Main Effects plotfor response variable:
+
+```{r , echo=FALSE}
+MEPlot(with(Exp626,aov(Yield~A*B*C*D*E)))
+```
+W can see that only main effects A,B, and C are probably significant.
+
+Interaction Plot matrix for response variable:
+
+```{r , echo=FALSE}
+IAPlot(with(Exp626,aov(Yield~A*B*C*D*E)))
+```
+Only interaction between A and B looks promising.
+
+Daniel Plot with $\alpha = 0.5$ and only significant factors
+
+```{r , echo=FALSE}
+DanielPlot(Exp626,code=TRUE)
+# Classical effects qqplot
+qqplot(DanielPlot(Exp626,alpha=0.1)$x,DanielPlot(Exp626)$y)
+qqline(DanielPlot(Exp626,alpha=0.1)$y)
+
+```
+Half normal plot of effects with $\alpha = 0.1$ indicates large effect of factors A,B,C and the interaction between factors A and B, eventually between factors D and E too.
+
+```{r , echo=FALSE}
+DanielPlot(Exp626,code=TRUE,alpha=0.1,half=TRUE)
+```
+As mentioned above main effects A,B,C and interaction AB look large.
+
+### Exercise 2:
+Conduct an analysis of variance to confirm your findings for part (1).
+```{r , echo=FALSE}
+summary(aov(Yield~A*B*C*D*E,data=Exp626[1:32,]))
+summary(aov(Yield~A*B*C*D*E-A:B:C:D:E,data=Exp626[1:32,]))
+anova(lm(Yield~(.)^2,data=Exp626[1:32,]))
+```
+Final model:
+```{r , echo=FALSE}
+anova(lm(Yield~A*B+C,data=Exp626[1:32,]))
+```
+
+### Exercise 3:
+Write down the regression model relating yield to the	significant process variables.
+```{r , echo=FALSE}
+summary(lm(Yield~A*B+C,data=Exp626[1:32,]))
+
+Exp626$B.num <- 2*(as.numeric(Exp626$B)-1.5)
+Exp626$C.num <- 2*(as.numeric(Exp626$C)-1.5)
+summary(lm(Yield~A*B.num+C.num,data=Exp626[1:32,]))
+
+
+Exp626$An         = "small"
+Exp626$An[Exp626$A==1] = "large"
+Exp626$Bn         = -20
+Exp626$Bn[Exp626$B==1] = 20
+Exp626$Cn         = 30
+Exp626$Cn[Exp626$C==1] = 45
+
+m2 <- (lm(Yield~An*Bn+Cn,data=Exp626[1:32,]))
+summary(m2)
+```
+
+### Exercise 4:
+Plot the residuals on normal probability paper. Is the 	plot satisfactory?
+```{r , echo=FALSE}
+opar <- par(mfrow=c(1,1))
+plot(m2, which =2)
+```
+
+### Exercise 5:
+Plot the residuals versus the predicted yields and versus	each of the five factors. Comment on the plots.
+```{r , echo=FALSE}
+opar <- par(mfrow=c(1,1))
+plot(m2, which =1)
+
+
+par(mfrow = c(2, 2))
+plot(m2, which = 1, pch = 20, col = "blue4", lwd = 2)
+plot(m2, which = 3, pch = 20, col = "blue4",  lwd = 2)
+abline(lm(sqrt(abs(rstandard(m2)))~fitted.values(m2)), col = "blue", lwd = 2)
+plot(Exp626[1:32,]$A, residuals(m2), pch = 20, col = "blue4",  xlab = "A", ylab = "Residuals",
+     main = "Residuals vs Covariate")
+lines(lowess(Exp626[1:32,]$A, residuals(m2)), col = "red3", lwd = 2)
+plot(Exp626[1:32,]$A, sqrt(abs(rstandard(m2))), pch = 20, col = "blue4", bg = "skyblue",
+     xlab = "A", ylab = as.expression(substitute(sqrt(abs(yL)), list(yL = as.name("Standardized residuals")))),
+     main = "Scale-Location")
+lines(lowess(Exp626[1:32,]$A, sqrt(abs(rstandard(m2)))), col = "red3", lwd = 2)
+abline(lm(sqrt(abs(rstandard(m2)))~Exp626[1:32,]$A), col = "blue", lwd = 2)
+
+
+
+par(mfrow = c(2, 2))
+plot(m2, which = 1, pch = 20, col = "blue4", lwd = 2)
+plot(m2, which = 3, pch = 20, col = "blue4",  lwd = 2)
+abline(lm(sqrt(abs(rstandard(m2)))~fitted.values(m2)), col = "blue", lwd = 2)
+plot(Exp626[1:32,]$Bn, residuals(m2), pch = 20, col = "blue4",  xlab = "B", ylab = "Residuals",
+     main = "Residuals vs Covariate")
+lines(lowess(Exp626[1:32,]$Bn, residuals(m2)), col = "red3", lwd = 2)
+plot(Exp626[1:32,]$Bn, sqrt(abs(rstandard(m2))), pch = 20, col = "blue4", bg = "skyblue",
+     xlab = "B", ylab = as.expression(substitute(sqrt(abs(yL)), list(yL = as.name("Standardized residuals")))),
+     main = "Scale-Location")
+lines(lowess(Exp626[1:32,]$Bn, sqrt(abs(rstandard(m2)))), col = "red3", lwd = 2)
+abline(lm(sqrt(abs(rstandard(m2)))~Exp626[1:32,]$Bn), col = "blue", lwd = 2)
+
+```		
+
+### Exercise 6:
+Interpret any significant interactions.
+```{r , echo=FALSE}
+with(Exp626,interaction.plot(A,B,Yield))
+```
+
+### Exercise 7:
+What are your recommendations regarding process	operating conditions?
+ 
+A set at high level and B and C as large as possible (ie. all three factors at high level).
+
+
+### Exercise 8:
+Project the $2^5$ design in this problem into a $2^k$ design in the important factors. Sketch the design and show the average and range of yields at each run. Does this sketch aid in interpreting the results of this	experiment?
+```{r , echo=FALSE}
+opar <- par(mfrow=c(1,1))
+with(Exp626[1:32,], cubePlot(Yield , A, B, C, main = "Cube plot of raw data",round=2))
+```
+AB interaction and effect of C are clearly evident.
+
+### Exercise 9:
+Suppose that the experimenter had run four center points in addition to the 32 trials in the original experiment. The yields obtained at the	center point runs were 68, 74, 76, and 70. Reanalyze the experiment, including a test for pure quadratic curvature. Discuss what your next step would be.
+```{r , echo=FALSE}
+Exp626         <-  FrF2(2^5, 5, replications = 1, randomize = FALSE,factor.names = c("A", "B", "C", "D","E"),ncenter = 4)
+Yield          <-  Ex626$Yield
+Exp626         <-  add.response(Exp626, Yield)
+Exp626$A[33:36] <- c(-1,1,-1,1)
+summary(Exp626)
+
+summary(aov(Yield~A*B*C*D*E,data=Exp626))
+
+anova(lm(Yield~(.)^2,data=Exp626))
+anova(lm(Yield~A*B*C,data=Exp626))
+anova(lm(Yield~A+B+C+A:B,data=Exp626))
+anova(lm(Yield~A+B+C,data=Exp626))
+anova(lm(Yield~A+B,data=Exp626))
+```			
+Only A and B are now signifficant.
+
+### Exercise 10:
+Construct and analyze a design in two blocks with ABCDE	confounded with blocks.
+```{r , echo=FALSE}
+Exp626c       <-  FrF2(2^5, 5, replications = 1, randomize = FALSE,factor.names = c("A", "B", "C", "D","E"),blocks=2)
+Yield         <-  Ex626$Yield[1:32]
+Exp626c       <-  add.response(Exp626c, Yield)
+Exp626c
+summary(aov(Yield~A*B*C*D*E*Blocks,data=Exp626c))
+summary(aov(Yield~(.)^2,data=Exp626c))
+summary(aov(Yield~(.)^2,data=Exp626c[,-6]))
+summary(aov(Yield~A+B+C+D+Blocks+Blocks:A+C:D,data=Exp626c[,-6]))
+summary(aov(Yield~B+C+D+C:D+Blocks,data=Exp626c[,-6]))
+```
+No Blocks effect.
+
+### Exercise 11:
+Construct and analyze a design in four blocks. Suggest a reasonable confounding scheme.
+```{r , echo=FALSE}
+Exp626d       <-  FrF2(2^5, 5, replications = 1, randomize = FALSE,factor.names = c("A", "B", "C", "D","E"),blocks=4)
+Exp626d       <-  add.response(Exp626c, Yield)
+Exp626d
+summary(aov(Yield~A*B*C*D*E*Blocks,data=Exp626d))
+summary(aov(Yield~(.)^2,data=Exp626d))
+summary(aov(Yield~(.)^2,data=Exp626c))
+summary(aov(Yield~A+B+C+D+E+Blocks+B:D,data=Exp626d))
+summary(aov(Yield~A+B+D+Blocks+B:D,data=Exp626d))
+
+```
+Final model differ from previous !!!
+
