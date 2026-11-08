@@ -1,0 +1,83 @@
+part,block,square,row,run,operator,date_time,L_m,n_rings,mass_g,theta_deg,N,t_N_s,note,source_order,group,code
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.64,Corrected pilot; seconds confirmed.,1,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.51,Corrected pilot; seconds confirmed.,2,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.39,Corrected pilot; seconds confirmed.,3,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.98,Corrected pilot; seconds confirmed.,4,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.66,Corrected pilot; seconds confirmed.,5,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.74,Corrected pilot; seconds confirmed.,6,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.92,Corrected pilot; seconds confirmed.,7,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,15.99,Corrected pilot; seconds confirmed.,8,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,16.34,Corrected pilot; seconds confirmed.,9,,
+pilot,0,0,2,,,,0.65,3.0,30.48,30,10,16.1,Corrected pilot; seconds confirmed.,10,,
+A,1,0,0,,A,,1.0,3,30.48,10,5,9.63,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",11,A,
+A,1,0,0,,A,,1.0,3,30.48,30,5,9.56,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",12,A,
+A,1,0,0,,A,,1.0,3,30.48,50,5,10.15,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",13,A,
+A,1,0,0,,A,,0.65,3,30.48,10,5,8.18,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",14,A,
+A,1,0,0,,A,,0.65,3,30.48,30,5,8.4,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",15,A,
+A,1,0,0,,A,,0.65,3,30.48,50,5,8.46,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",16,A,
+A,1,0,0,,A,,0.35,3,30.48,10,5,6.18,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",17,A,
+A,1,0,0,,A,,0.35,3,30.48,30,5,6.1,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",18,A,
+A,1,0,0,,A,,0.35,3,30.48,50,5,6.21,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",19,A,
+A,2,0,0,,B,,1.0,3,30.48,10,5,9.23,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",20,B,
+A,2,0,0,,B,,1.0,3,30.48,30,5,9.76,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",21,B,
+A,2,0,0,,B,,1.0,3,30.48,50,5,10.07,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",22,B,
+A,2,0,0,,B,,0.65,3,30.48,10,5,8.2,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",23,B,
+A,2,0,0,,B,,0.65,3,30.48,30,5,8.4,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",24,B,
+A,2,0,0,,B,,0.65,3,30.48,50,5,8.55,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",25,B,
+A,2,0,0,,B,,0.35,3,30.48,10,5,5.98,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",26,B,
+A,2,0,0,,B,,0.35,3,30.48,30,5,6.1,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",27,B,
+A,2,0,0,,B,,0.35,3,30.48,50,5,6.21,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",28,B,
+A,3,0,0,,C,,1.0,3,30.48,10,5,9.2,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",29,C,
+A,3,0,0,,C,,1.0,3,30.48,30,5,10.01,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",30,C,
+A,3,0,0,,C,,1.0,3,30.48,50,5,9.83,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",31,C,
+A,3,0,0,,C,,0.65,3,30.48,10,5,7.21,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",32,C,
+A,3,0,0,,C,,0.65,3,30.48,30,5,7.7,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",33,C,
+A,3,0,0,,C,,0.65,3,30.48,50,5,6.98,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",34,C,
+A,3,0,0,,C,,0.35,3,30.48,10,5,5.67,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",35,C,
+A,3,0,0,,C,,0.35,3,30.48,30,5,5.15,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",36,C,
+A,3,0,0,,C,,0.35,3,30.48,50,5,6.04,"Repetition 1; 3 rings, 30.48 g; seconds confirmed.",37,C,
+A,4,0,0,,A,,1.0,3,30.48,10,5,10.0,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",38,A,
+A,4,0,0,,A,,1.0,3,30.48,30,5,10.29,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",39,A,
+A,4,0,0,,A,,1.0,3,30.48,50,5,10.51,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",40,A,
+A,4,0,0,,A,,0.65,3,30.48,10,5,7.91,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",41,A,
+A,4,0,0,,A,,0.65,3,30.48,30,5,8.38,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",42,A,
+A,4,0,0,,A,,0.65,3,30.48,50,5,8.42,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",43,A,
+A,4,0,0,,A,,0.35,3,30.48,10,5,5.97,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",44,A,
+A,4,0,0,,A,,0.35,3,30.48,30,5,5.96,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",45,A,
+A,4,0,0,,A,,0.35,3,30.48,50,5,6.3,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",46,A,
+A,5,0,0,,B,,1.0,3,30.48,10,5,10.21,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",47,B,
+A,5,0,0,,B,,1.0,3,30.48,30,5,10.41,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",48,B,
+A,5,0,0,,B,,1.0,3,30.48,50,5,10.53,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",49,B,
+A,5,0,0,,B,,0.65,3,30.48,10,5,8.0,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",50,B,
+A,5,0,0,,B,,0.65,3,30.48,30,5,8.05,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",51,B,
+A,5,0,0,,B,,0.65,3,30.48,50,5,8.64,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",52,B,
+A,5,0,0,,B,,0.35,3,30.48,10,5,5.99,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",53,B,
+A,5,0,0,,B,,0.35,3,30.48,30,5,5.98,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",54,B,
+A,5,0,0,,B,,0.35,3,30.48,50,5,6.32,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",55,B,
+A,6,0,0,,C,,1.0,3,30.48,10,5,9.97,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",56,C,
+A,6,0,0,,C,,1.0,3,30.48,30,5,9.95,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",57,C,
+A,6,0,0,,C,,1.0,3,30.48,50,5,10.11,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",58,C,
+A,6,0,0,,C,,0.65,3,30.48,10,5,7.77,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",59,C,
+A,6,0,0,,C,,0.65,3,30.48,30,5,7.92,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",60,C,
+A,6,0,0,,C,,0.65,3,30.48,50,5,8.4,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",61,C,
+A,6,0,0,,C,,0.35,3,30.48,10,5,5.64,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",62,C,
+A,6,0,0,,C,,0.35,3,30.48,30,5,5.84,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",63,C,
+A,6,0,0,,C,,0.35,3,30.48,50,5,5.91,"Repetition 2; 3 rings, 30.48 g; seconds confirmed. Sheet label: 26.10 (year unspecified).",64,C,
+B,0,1,1,,A,,0.65,1.0,10.14,10,10,16.68,Upper table,65,,Aβ
+B,0,1,1,,A,,0.35,2.0,20.22,50,10,12.58,Upper table,66,,Cα
+B,0,1,1,,A,,1.0,3.0,30.48,30,10,20.29,Upper table,67,,Bγ
+B,0,1,2,,B,,0.35,1.0,10.14,30,10,12.24,Upper table,68,,Bα
+B,0,1,2,,B,,1.0,2.0,20.22,10,10,19.24,Upper table,69,,Aγ
+B,0,1,2,,B,,0.65,3.0,30.48,50,10,16.1,Upper table,70,,Cβ
+B,0,1,3,,C,,1.0,1.0,10.14,50,10,19.91,Upper table,71,,Cγ
+B,0,1,3,,C,,0.65,2.0,20.22,30,10,16.22,Upper table,72,,Bβ
+B,0,1,3,,C,,0.35,3.0,30.48,10,10,11.6,Upper table,73,,Aα
+B,0,2,1,,A,,1.0,1.0,10.14,10,10,20.43,Lower table,74,,Aγ
+B,0,2,1,,A,,0.35,2.0,20.22,50,10,12.27,Lower table,75,,Cα
+B,0,2,1,,A,,0.65,3.0,30.48,30,10,16.34,Lower table,76,,Bβ
+B,0,2,2,,B,,0.65,1.0,10.14,50,10,16.7,Lower table,77,,Cβ
+B,0,2,2,,B,,1.0,2.0,20.22,30,10,19.2,Lower table,78,,Bγ
+B,0,2,2,,B,,0.35,3.0,30.48,10,10,11.2,Lower table,79,,Aα
+B,0,2,3,,C,,0.35,1.0,10.14,30,10,11.67,Lower table,80,,Bα
+B,0,2,3,,C,,0.65,2.0,20.22,10,10,15.8,Lower table,81,,Aβ
+B,0,2,3,,C,,1.0,3.0,30.48,50,10,20.55,Lower table,82,,Cγ
